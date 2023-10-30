@@ -45,4 +45,4 @@ The image above is a biome map generated using the *White* option. It generates 
 
 Currently, I am working to add an elevation factor that can be used to create a visual representation of mountains and valleys. For now, colder biomes tend to represent higher elevations and hotter biomes represent lower elevations. When an elevation factor is added, the camera will be updated to be able to rotate horizontally and vertically. 
 
-Thanks to [Christopherwmm](https://github.com/ChristopherWMM).
+Thanks to [Christopherwmm](https://github.com/ChristopherWMM) for providing the additional *Perlin*, *Voronoi*, and *White* noise functions. While those three functions are not fully visualized yet, they can still be generated using my generic *Noise* function.
