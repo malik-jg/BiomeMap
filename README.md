@@ -24,7 +24,10 @@ Each map is generated from top-to-down, right-to-left from an isometric view.
 ## Noise BiomeMap
 ![Screenshot (291)](https://github.com/malik-jg/BiomeMap/assets/119100640/01be9ad3-532c-4d0d-a9ef-3f0cc3b8e260)
 
-The image above is a biome map generated using the *Noise* option. It is similar to the *Perlin* function, where the only difference is the *Noise* function returns values approximately in the range [-1.2,1.2], whereas *Perlin* is limited to [0,1]. A larger range allows for a much larger variety of biomes to be generated. 
+The image above is a biome map generated using the *Noise* option. It is similar to the *Perlin* function, where the only difference is the *Noise* function returns values approximately in the range [-1.2,1.2], whereas *Perlin* is limited to [0,1]. A larger range allows for a much larger variety of biomes to be generated. The following image shows how the colors on the generated biome map correspond to values output by the *Noise* function.
+
+![BIOMEZONES](https://github.com/malik-jg/BiomeMap/assets/119100640/343c19ca-77bf-4050-9525-a02cfd30ae6a)
+
 
 ## Perlin BiomeMap
 ![Screenshot (293)](https://github.com/malik-jg/BiomeMap/assets/119100640/4d5b132d-7da0-4402-9521-c915a36fd282)
