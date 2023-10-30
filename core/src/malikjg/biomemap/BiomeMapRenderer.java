@@ -41,12 +41,14 @@ public class BiomeMapRenderer{
 			for(int j = biomeMapGenerator.getHeight() / 2 - 1; j >= -biomeMapGenerator.getHeight() / 2 ; j--) {
 				float x = i * 0.5f * Tile.TILE_WIDTH + j * -0.5f  * Tile.TILE_WIDTH - 0.5f*Tile.TILE_WIDTH;
 				float y = i * 0.25f * Tile.TILE_HEIGHT + j * 0.25f * Tile.TILE_HEIGHT - 0.5f*Tile.TILE_WIDTH;;
-				drawBiome(batch, textureAtlas, textureRegion, humidity[i + humidity.length / 2][j + humidity.length / 2], temperature[i + temperature.length / 2][j + temperature.length / 2], x, y);
-
+				if(biomeMapGenerator.getNoise().equals("Noise"))drawNoiseBiome(batch, textureAtlas, textureRegion, humidity[i + humidity.length / 2][j + humidity.length / 2], temperature[i + temperature.length / 2][j + temperature.length / 2], x, y);
+				else if(biomeMapGenerator.getNoise().equals("Perlin"))drawPerlinBiome(batch, textureAtlas, textureRegion, humidity[i + humidity.length / 2][j + humidity.length / 2], temperature[i + temperature.length / 2][j + temperature.length / 2], x, y);
+				else if(biomeMapGenerator.getNoise().equals("Voronoi"))drawNoiseBiome(batch, textureAtlas, textureRegion, humidity[i + humidity.length / 2][j + humidity.length / 2], temperature[i + temperature.length / 2][j + temperature.length / 2], x, y);
+				else if(biomeMapGenerator.getNoise().equals("White"))drawNoiseBiome(batch, textureAtlas, textureRegion, humidity[i + humidity.length / 2][j + humidity.length / 2], temperature[i + temperature.length / 2][j + temperature.length / 2], x, y);
 			}
 		}
 	}
-	public void drawBiome(SpriteBatch batch, TextureAtlas textureAtlas, TextureRegion textureRegion, double humidity, double temperature, float biomeX, float biomeY) {
+	public void drawNoiseBiome(SpriteBatch batch, TextureAtlas textureAtlas, TextureRegion textureRegion, double humidity, double temperature, float biomeX, float biomeY) {
 		textureRegion = textureAtlas.findRegion("Ice");		
 		batch.draw(textureRegion, biomeX, biomeY);
 		if(humidity > 0.875) {
@@ -474,6 +476,442 @@ public class BiomeMapRenderer{
 		}
 		else{
 			if(temperature > 0.666) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}	
+	}
+	
+	public void drawPerlinBiome(SpriteBatch batch, TextureAtlas textureAtlas, TextureRegion textureRegion, double humidity, double temperature, float biomeX, float biomeY) {
+		textureRegion = textureAtlas.findRegion("Ice");		
+		batch.draw(textureRegion, biomeX, biomeY);
+		if(humidity > 0.9375) {
+			if(temperature > 0.85) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);		
+			}
+		else if(humidity > 0.875) {
+			if(temperature > 0.85) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new DeciduousForests(x,y);
+				textureRegion = textureAtlas.findRegion("DeciduousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+		}
+		else if(humidity > 0.8125) {
+			if(temperature > 0.85) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new DeciduousForests(x,y);
+				textureRegion = textureAtlas.findRegion("DeciduousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new MixedForests(x,y);
+				textureRegion = textureAtlas.findRegion("MixedForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+
+		}
+		else if(humidity > 0.75) {
+			if(temperature > 0.85) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new DeciduousForests(x,y);
+				textureRegion = textureAtlas.findRegion("DeciduousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+
+			}
+			else if(temperature > 0.42) {
+				//return new MixedForests(x,y);
+				textureRegion = textureAtlas.findRegion("MixedForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ConiferousForests(x,y);
+				textureRegion = textureAtlas.findRegion("ConiferousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+
+		}
+		else if(humidity > 0.6875) {
+			if(temperature > 0.85) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new DeciduousForests(x,y);
+				textureRegion = textureAtlas.findRegion("DeciduousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new MixedForests(x,y);
+				textureRegion = textureAtlas.findRegion("MixedForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ConiferousForests(x,y);
+				textureRegion = textureAtlas.findRegion("ConiferousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+
+		}
+		else if(humidity > 0.6250) {
+			if(temperature > 0.85) {
+				//return new TropicalRainForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalSeasonalForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalRainForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new DeciduousForests(x,y);
+				textureRegion = textureAtlas.findRegion("DeciduousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new MixedForests(x,y);
+				textureRegion = textureAtlas.findRegion("MixedForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ConiferousForests(x,y);
+				textureRegion = textureAtlas.findRegion("ConiferousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0) {
+				//return new Ice(x,y);
+				textureRegion = textureAtlas.findRegion("Ice");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+
+		}
+		else if(humidity > 0.5625) {
+			if(temperature > 0.85) {
+				//return new TropicalSeasonalForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalSeasonalForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalSeasonalForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalSeasonalForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new DeciduousForests(x,y);
+				textureRegion = textureAtlas.findRegion("DeciduousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new MixedForests(x,y);
+				textureRegion = textureAtlas.findRegion("MixedForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ConiferousForests(x,y);
+				textureRegion = textureAtlas.findRegion("ConiferousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0) {
+				//return new Ice(x,y);
+				textureRegion = textureAtlas.findRegion("Ice");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else if(humidity > 0.5) {
+			if(temperature > 0.85) {
+				//return new TropicalSeasonalForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalSeasonalForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalSeasonalForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalSeasonalForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new Chaparral(x,y);
+				textureRegion = textureAtlas.findRegion("Chaparral");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new MixedForests(x,y);
+				textureRegion = textureAtlas.findRegion("MixedForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ConiferousForests(x,y);
+				textureRegion = textureAtlas.findRegion("ConiferousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0) {
+				//return new Ice(x,y);
+				textureRegion = textureAtlas.findRegion("Ice");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+
+		}
+		else if(humidity > 0.4375) {
+			if(temperature > 0.85) {
+				//return new Savanna(x,y);
+				textureRegion = textureAtlas.findRegion("Savanna");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new TropicalSeasonalForests(x,y);
+				textureRegion = textureAtlas.findRegion("TropicalSeasonalForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new Chaparral(x,y);
+				textureRegion = textureAtlas.findRegion("Chaparral");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new Steppes(x,y);
+				textureRegion = textureAtlas.findRegion("Steppes");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ConiferousForests(x,y);
+				textureRegion = textureAtlas.findRegion("ConiferousForests");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0) {
+				//return new Ice(x,y);
+				textureRegion = textureAtlas.findRegion("Ice");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else if(humidity > 0.375) {
+			if(temperature > 0.85) {
+				//return new Savanna(x,y);
+				textureRegion = textureAtlas.findRegion("Savanna");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new Savanna(x,y);
+				textureRegion = textureAtlas.findRegion("Savanna");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				///return new Chaparral(x,y);
+				textureRegion = textureAtlas.findRegion("Chaparral");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new Steppes(x,y);
+				textureRegion = textureAtlas.findRegion("Steppes");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ColdParklands(x,y);
+				textureRegion = textureAtlas.findRegion("ColdParklands");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0) {
+				//return new Ice(x,y);
+				textureRegion = textureAtlas.findRegion("Ice");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else if(humidity > 0.3125) {
+			if(temperature > 0.85) {
+				//return new Savanna(x,y);
+				textureRegion = textureAtlas.findRegion("Savanna");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new Savanna(x,y);
+				textureRegion = textureAtlas.findRegion("Savanna");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new Chaparral(x,y);
+				textureRegion = textureAtlas.findRegion("Chaparral");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new CoolDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("CoolDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new ColdParklands(x,y);
+				textureRegion = textureAtlas.findRegion("ColdParklands");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.14) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0) {
+				//return new Ice(x,y);
+				textureRegion = textureAtlas.findRegion("Ice");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else if(humidity > 0.25) {
+			if(temperature > 0.85) {
+				//return new Savanna(x,y);
+				textureRegion = textureAtlas.findRegion("Savanna");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new CoolDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("CoolDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new ColdParklands(x,y);
+				textureRegion = textureAtlas.findRegion("ColdParklands");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.28) {
+				//return new Tundra(x,y);
+				textureRegion = textureAtlas.findRegion("Tundra");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else if(humidity > 0.1875) {
+			if(temperature > 0.85) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}	
+			else if(temperature > 0.71) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new CoolDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("CoolDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.42) {
+				//return new ColdParklands(x,y);
+				textureRegion = textureAtlas.findRegion("ColdParklands");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+		}
+		else if(humidity > 0.125) {
+			if(temperature > 0.85) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.71) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.57) {
+				//return new CoolDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("CoolDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else if(humidity > 0.0625) {
+			if(temperature > 0.81) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+			else if(temperature > 0.75) {
+				//return new HotDeserts(x,y);
+				textureRegion = textureAtlas.findRegion("HotDeserts");		
+				batch.draw(textureRegion, biomeX, biomeY);
+			}
+
+		}
+		else{
+			if(temperature > 0.81) {
 				//return new HotDeserts(x,y);
 				textureRegion = textureAtlas.findRegion("HotDeserts");		
 				batch.draw(textureRegion, biomeX, biomeY);
